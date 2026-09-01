@@ -52,16 +52,27 @@ results = pd.DataFrame({
 print(results.to_string(index=False))
 
 #task 5
-
+#how often the relative error is below 10%
 def successes(n, reps=50):
     success = 0
     for _ in range(reps):
         P = simulation(n)
         relative_error = abs(P - p_win) / p_win
-        if (relative_error <= 0.1):
+        if relative_error < 0.10:
             success += 1
     return success / reps
 
-for i in range(1, 10):
-    m = successes(i * 1000)
-    print(m)
+
+#different numbers of trials
+test_trials = [1000, 5000, 10000, 20000, 40000, 60000, 100000]
+
+success_rates = [successes(n) for n in test_trials]
+
+
+# Display the results
+task5_results = pd.DataFrame({
+    "Number of trials": test_trials,
+    "Proportion below 10% error": success_rates
+})
+
+print(task5_results.to_string(index=False))
