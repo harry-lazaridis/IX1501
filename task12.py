@@ -64,7 +64,7 @@ def successes(n, reps=50):
 
 
 #different numbers of trials
-test_trials = [1000, 5000, 10000, 20000, 40000, 60000, 100000]
+test_trials = [1000, 5000, 10000, 50000, 100000]
 
 success_rates = [successes(n) for n in test_trials]
 
